@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HIDAKI® — Creative Studio</title>
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 25px 6%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 1000;
+
+            background: rgba(10, 10, 10, 0.7);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+
+            color: white;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #888;
+            text-decoration: none;
+
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 140px 8% 100px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            background: #6c3cff;
+
+            filter: blur(180px);
+
+            opacity: 0.18;
+
+            top: 10%;
+            right: 5%;
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            color: #9c7cff;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(60px, 10vw, 140px);
+
+            line-height: 0.9;
+
+            letter-spacing: -7px;
+
+            margin-bottom: 35px;
+        }
+
+        .hero p {
+            max-width: 550px;
+
+            color: #999;
+
+            font-size: 20px;
+
+            line-height: 1.6;
+
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .button {
+            display: inline-block;
+
+            padding: 16px 30px;
+
+            background: white;
+            color: black;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border-radius: 8px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+
+            background: #9c7cff;
+            color: white;
+        }
+
+
+        /* =========================================
+           GENERAL SECTIONS
+        ========================================= */
+
+        section {
+            padding: 120px 8%;
+        }
+
+        .section-title {
+            font-size: 50px;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 50px;
+        }
+
+
+        /* =========================================
+           ABOUT
+        ========================================= */
+
+        .about {
+            border-top: 1px solid #222;
+        }
+
+        .about-text {
+            max-width: 850px;
+
+            font-size: 32px;
+
+            line-height: 1.4;
+
+            color: #888;
+        }
+
+        .about-text span {
+            color: white;
+        }
+
+
+        /* =========================================
+           SERVICES
+        ========================================= */
+
+        .services {
+            border-top: 1px solid #222;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .card {
+            display: block;
+
+            position: relative;
+
+            min-height: 250px;
+
+            padding: 35px;
+
+            background: #111;
+
+            border: 1px solid #222;
+
+            border-radius: 15px;
+
+            color: white;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            border-color: #555;
+
+            background: #131313;
+        }
+
+        .card-number {
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 50px;
+        }
+
+        .card h3 {
+            font-size: 25px;
+
+            margin-bottom: 15px;
+
+            color: white;
+        }
+
+        .card p {
+            color: #888;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           MUSIC CARD
+        ========================================= */
+
+        .music-card {
+            cursor: pointer;
+        }
+
+        .music-card .card-arrow {
+            position: absolute;
+
+            right: 30px;
+            bottom: 25px;
+
+            font-size: 25px;
+
+            color: #666;
+
+            transition:
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .music-card:hover .card-arrow {
+            color: white;
+
+            transform: translate(4px, -4px);
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================= */
+
+        .cta {
+            text-align: center;
+
+            border-top: 1px solid #222;
+        }
+
+        .cta h2 {
+            font-size: clamp(50px, 8vw, 100px);
+
+            letter-spacing: -5px;
+
+            line-height: 0.9;
+
+            margin-bottom: 40px;
+        }
+        .telegram {
+    margin-bottom: 30px;
+    color: #888;
+    font-size: 18px;
+}
+
+.telegram a {
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.telegram a:hover {
+    color: #9c7cff;
+}
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            padding: 30px 8%;
+
+            border-top: 1px solid #222;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 20px;
+            }
+
+            nav .links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 6% 80px;
+            }
+
+            h1 {
+                font-size: 70px;
+
+                letter-spacing: -4px;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .about-text {
+                font-size: 24px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                min-height: 230px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 10px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <nav>
+
+        <div class="logo">
+            HIDAKI®
+        </div>
+
+        <div class="links">
+
+            <a href="#about">
+                Обо мне
+            </a>
+
+            <a href="#services">
+                Услуги
+            </a>
+
+            <a href="#contact">
+                Контакты
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
+    <main>
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="tag">
+                    Creative / Music / Digital
+                </div>
+
+                <h1>
+                    CREATE<br>
+                    YOUR<br>
+                    WORLD.
+                </h1>
+
+                <p>
+                    Музыка, визуал и цифровые проекты.
+                    Создаю вещи, которые хочется запомнить.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="button"
+                >
+                    Связаться →
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             ABOUT
+        ====================================== -->
+
+        <section
+            class="about"
+            id="about"
+        >
+
+            <h2 class="section-title">
+                Кто я
+            </h2>
+
+            <p class="about-text">
+
+                Я <span>Hidaki</span> —
+                музыкант, стример
+                и digital creator.
+
+                Работаю со звуком,
+                видео и визуалом,
+                превращая идеи
+                в законченные проекты.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SERVICES
+        ====================================== -->
+
+        <section
+            class="services"
+            id="services"
+        >
+
+            <h2 class="section-title">
+                Что я делаю
+            </h2>
+
+
+            <div class="cards">
+
+
+                <!-- =================================
+                     MUSIC
+                ================================== -->
+
+                <a
+                    href="https://soundcloud.com/ahahahsdhgqwej"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card music-card"
+                >
+
+                    <div class="card-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Music
+                    </h3>
+
+                    <p>
+                        Создание битов, запись вокала,
+                        сведение и мастеринг.
+                    </p>
+
+                    <div class="card-arrow">
+                        ↗
+                    </div>
+
+                </a>
+
+
+
+                <!-- =================================
+                     CONTENT
+                ================================== -->
+
+                <div class="card">
+
+                    <div class="card-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Content
+                    </h3>
+
+                    <p>
+                        YouTube, монтаж,
+                        короткие видео
+                        и визуальный контент.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================
+                     DIGITAL
+                ================================== -->
+
+                <div class="card">
+
+                    <div class="card-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Digital
+                    </h3>
+
+                    <p>
+                        Сайты, лендинги
+                        и цифровые проекты
+                        с современным дизайном.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             CONTACT
+        ====================================== -->
+
+<section
+    class="cta"
+    id="contact"
+>
+
+    <h2>
+        LET'S<br>
+        CREATE.
+    </h2>
+
+    <p class="telegram">
+        Telegram:
+        <a
+            href="https://t.me/hid4ki"
+            target="_blank"
+        >
+            @pspspqe
+        </a>
+    </p>
+
+    <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=gshot264@gmail.com"
+        target="_blank"
+        class="button"
+    >
+        Написать мне →
+    </a>
+
+</section>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+        <div>
+            © 2026 HIDAKI
+        </div>
+
+        <div>
+            Made with obsession.
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
